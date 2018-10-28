@@ -14,7 +14,7 @@ Flobot is a [Slack app](https://get.slack.help/hc/en-us/articles/202035138-Add-a
 * Run `npm install`
 
 ## Usage
-Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants.js](constants.js) will be called and the responses will be posted via the `SLACK_FLOBOT_WEBHOOK`.
+Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants.js](src/constants.js) will be called and the responses will be posted via the `SLACK_FLOBOT_WEBHOOK`.
 
 If the environment variables are created locally, this code can also be run with `npm start`.
 
@@ -33,10 +33,10 @@ If the environment variables are created locally, this code can also be run with
 To make changes to this PR, adhere to the following process:
 
 1. Fork this repository.
- * Pull the latest if you've previously forked this repo.
-2. Create a feature branch.
-3. Push your branch and create a PR.
- * Once your PR is merged it will be deployed to Heroku.
+  1. Pull the latest if you've previously forked this repo.
+1. Create a feature branch.
+1. Push your branch and create a PR.
+  1. Once your PR is merged it will be deployed to Heroku.
 
 **NOTE:** Making changes to this repo requires admin access to Black Code Collective's Slack team, Typeform, mLab database, and collaborator access to the Flobot Heroku app.
 
