@@ -1,4 +1,4 @@
-const formatMultiSelectField = (answer) => {
+const formatMultiSelectField = answer => {
   const otherFieldStr = answer.choices.other
   const multiFieldArr = answer.choices.labels || []
 
@@ -13,7 +13,7 @@ const formatMultiSelectField = (answer) => {
  * the formatAnswer function is specific to the format of the typeform based on
  * https://developer.typeform.com/responses/reference/retrieve-responses/
  */
-const formatAnswer = (answer) => {
+const formatAnswer = answer => {
   switch (answer.field.id) {
     case '39429982': // name field id
       return `*Name:* ${answer.text}`
