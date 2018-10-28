@@ -19,6 +19,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var setLastQueryDate = function setLastQueryDate(client, collection) {
   var newLastQueryDate = new Date().toString();
+
   collection.updateOne({}, { $set: { date: newLastQueryDate } }, function (err, doc) {
     if (err) {
       console.log('ERROR: can\'t update \'lastQuery\' document: ' + err);
@@ -38,7 +39,7 @@ var getLastQueryDate = function getLastQueryDate(client, collection) {
 
     console.log('last queried ' + document.date);
 
-    var lastQueryDate = new Date('10/20/18'); //new Date(document.date)
+    var lastQueryDate = new Date(document.date);
     (0, _getTypeformResponses2.default)(lastQueryDate, _postToSlack.postResponsesToSlack);
 
     setLastQueryDate(client, collection);
