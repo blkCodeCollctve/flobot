@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var postResponseToSlack = function postResponseToSlack(msg) {
   return (0, _axios2.default)({
     method: 'post',
-    url: _constants.SLACK_FLOBOT_WEBHOOK_TEST, //SLACK_FLOBOT_WEBHOOK_TEST,
+    url: _constants.SLACK_FLOBOT_WEBHOOK,
     data: {
       text: msg
     },

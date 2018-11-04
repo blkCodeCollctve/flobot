@@ -1,12 +1,17 @@
 const formatMultiSelectField = answer => {
-  const otherFieldStr = answer.choices.other
+  const otherFieldStr = answer.choices.other || ''
   const multiFieldArr = answer.choices.labels || []
 
-  const formattedMultiFields = multiFieldArr.length > 0 ?
-    multiFieldArr.reduce((acc, curr) => acc ? `${acc}, ${curr}` : `${curr}`, '') :
-    ''
+  // format multi select field
+  const formattedMultiFields = multiFieldArr.length > 0 ? multiFieldArr.join(', ') : ''
 
-  return otherFieldStr ? `${formattedMultiFields}, ${otherFieldStr}` : formattedMultiFields
+  // add other field to multi select field if both exist
+  if (formattedMultiFields) {
+    return otherFieldStr ? `${formattedMultiFields}, ${otherFieldStr}` : formattedMultiFields
+  }
+
+  // return other field if multi select field is empty
+  return otherFieldStr
 }
 
 /**
@@ -28,7 +33,7 @@ const formatAnswer = answer => {
     case '39431226': // hopes field id
       return `*Hopes and Dreams:* ${formatMultiSelectField(answer)}`
     default:
-      console.log(`ERROR: unexpected field in typeform response`)
+      console.log(`ERROR: unexpected field in typeform response from ${answer.email}`)
       return ''
   }
 }
@@ -47,9 +52,6 @@ const encodeForSlack = msg => msg.replace(/<|>|&/gi, matched => replacementMap[m
 export const formatTypeFormResponses = items =>
   items.map(
     item => encodeForSlack(item.answers.reduce(
-      (answersAcc, answer) => answersAcc ?
-        `${answersAcc}${formatAnswer(answer)}\n` :
-        `${formatAnswer(answer)}\n`, ''
-      )
-    )
+      (answersAcc, answer) => answersAcc ? `${answersAcc}${formatAnswer(answer)}\n` : `${formatAnswer(answer)}\n`, ''
+    ))
   )
