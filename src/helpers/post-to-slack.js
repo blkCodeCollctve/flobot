@@ -5,7 +5,7 @@ import { formatTypeFormResponses } from './format-typeform'
 
 const postResponseToSlack = msg => axios({
     method: 'post',
-    url: SLACK_FLOBOT_WEBHOOK_TEST,
+    url: SLACK_FLOBOT_WEBHOOK,
     data: {
       text: msg
     },

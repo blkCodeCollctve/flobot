@@ -30,6 +30,9 @@ var runFlobot = exports.runFlobot = function () {
           case 0:
             newLastQueryDateString = new Date().toString();
             client = void 0, db = void 0, collection = void 0, lastQueryDateString = void 0, typeformResponses = void 0;
+
+            // connect to db
+
             _context.prev = 2;
             _context.next = 5;
             return (0, _db.connectToDB)();

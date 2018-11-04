@@ -4,14 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var formatMultiSelectField = function formatMultiSelectField(answer) {
-  var otherFieldStr = answer.choices.other;
+  var otherFieldStr = answer.choices.other || '';
   var multiFieldArr = answer.choices.labels || [];
 
-  var formattedMultiFields = multiFieldArr.length > 0 ? multiFieldArr.reduce(function (acc, curr) {
-    return acc ? acc + ', ' + curr : '' + curr;
-  }, '') : '';
+  // format multi select field
+  var formattedMultiFields = multiFieldArr.length > 0 ? multiFieldArr.join(', ') : '';
 
-  return otherFieldStr ? formattedMultiFields + ', ' + otherFieldStr : formattedMultiFields;
+  // add other field to multi select field if both exist
+  if (formattedMultiFields) {
+    return otherFieldStr ? formattedMultiFields + ', ' + otherFieldStr : formattedMultiFields;
+  }
+
+  // return other field if multi select field is empty
+  return otherFieldStr;
 };
 
 /**
@@ -39,7 +44,7 @@ var formatAnswer = function formatAnswer(answer) {
       // hopes field id
       return '*Hopes and Dreams:* ' + formatMultiSelectField(answer);
     default:
-      console.log('ERROR: unexpected field in typeform response');
+      console.log('ERROR: unexpected field in typeform response from ' + answer.email);
       return '';
   }
 };
