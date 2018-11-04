@@ -16,15 +16,13 @@ var _formatTypeform = require('./format-typeform');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var postResponseToSlack = function postResponseToSlack(msg) {
-  (0, _axios2.default)({
+  return (0, _axios2.default)({
     method: 'post',
-    url: _constants.SLACK_FLOBOT_WEBHOOK_TEST,
+    url: _constants.SLACK_FLOBOT_WEBHOOK_TEST, //SLACK_FLOBOT_WEBHOOK_TEST,
     data: {
       text: msg
     },
     contentType: 'application/json'
-  }).then(console.log('posted response to slack')).catch(function (err) {
-    return console.log('ERROR: couldn\'t post response to slack: ' + err);
   });
 };
 
