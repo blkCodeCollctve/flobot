@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb'
-
 import { DB_CONNECTION } from './constants'
 
 export const connectToDB = () =>
