@@ -11,17 +11,19 @@ const formatMultiSelectField = answer => {
   const otherFieldStr = answer.choices.other || ''
   const multiFieldArr = answer.choices.labels || []
 
-  // format multi select field
+  // format multi-select field
   const formattedMultiFields = multiFieldArr.length > 0 ? multiFieldArr.join(', ') : ''
 
-  // add other field to multi select field if both exist
+  // add "other" free-form field to multi-select field if both exist
   if (formattedMultiFields) {
     return otherFieldStr ? `${formattedMultiFields}, ${otherFieldStr}` : formattedMultiFields
   }
 
-  // return other field if multi select field is empty
+  // return other field if multi-select field is empty
   return otherFieldStr
 }
+
+const formatFieldLabel = text => `*${text}:*`
 
 /**
  * the formatAnswer function is specific to the format of the typeform based on
@@ -30,17 +32,17 @@ const formatMultiSelectField = answer => {
 const formatAnswer = answer => {
   switch (answer.field.id) {
     case NAME_FIELD_ID:
-      return `*Name:* ${answer.text}`
+      return `${formatFieldLabel('Name')} ${answer.text}`
     case EMAIL_FIELD_ID:
-      return `*Email:* ${answer.email}`
+      return `${formatFieldLabel('Email')} ${answer.email}`
     case MEETUP_URL_FIELD_ID:
-      return `*Meetup Profile:* ${answer.text}`
+      return `${formatFieldLabel('Meetup Profile')} ${answer.text}`
     case EXPERIENCE_FIELD_ID:
-      return `*Years of Programming/IT Experience:* ${answer.text}`
+      return `${formatFieldLabel('Years of Programming/IT Experience')} ${answer.text}`
     case LANGUAGE_FIELD_ID:
-      return `*Current Languages:* ${answer.text}`
+      return `${formatFieldLabel('Current Languages')} ${answer.text}`
     case HOPES_FIELD_ID:
-      return `*Hopes and Dreams:* ${formatMultiSelectField(answer)}`
+      return `${formatFieldLabel('Hopes and Dreams')} ${formatMultiSelectField(answer)}`
     default:
       console.log(`ERROR: unexpected field in typeform response from ${answer.email}`)
       return ''
