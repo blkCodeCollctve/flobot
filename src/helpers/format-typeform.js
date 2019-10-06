@@ -1,3 +1,12 @@
+import {
+  NAME_FIELD_ID,
+  EMAIL_FIELD_ID,
+  MEETUP_URL_FIELD_ID,
+  EXPERIENCE_FIELD_ID,
+  LANGUAGE_FIELD_ID,
+  HOPES_FIELD_ID
+} from '../constants'
+
 const formatMultiSelectField = answer => {
   const otherFieldStr = answer.choices.other || ''
   const multiFieldArr = answer.choices.labels || []
@@ -20,17 +29,17 @@ const formatMultiSelectField = answer => {
  */
 const formatAnswer = answer => {
   switch (answer.field.id) {
-    case '39429982': // name field id
+    case NAME_FIELD_ID:
       return `*Name:* ${answer.text}`
-    case '39431729': // email field id
+    case EMAIL_FIELD_ID:
       return `*Email:* ${answer.email}`
-    case '59348020': // meetup url field id
+    case MEETUP_URL_FIELD_ID:
       return `*Meetup Profile:* ${answer.text}`
-    case '39430036': // experience field id
+    case EXPERIENCE_FIELD_ID:
       return `*Years of Programming/IT Experience:* ${answer.text}`
-    case '39429985': // language field id
+    case LANGUAGE_FIELD_ID:
       return `*Current Languages:* ${answer.text}`
-    case '39431226': // hopes field id
+    case HOPES_FIELD_ID:
       return `*Hopes and Dreams:* ${formatMultiSelectField(answer)}`
     default:
       console.log(`ERROR: unexpected field in typeform response from ${answer.email}`)
