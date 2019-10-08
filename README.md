@@ -11,7 +11,7 @@ Flobot is a [Slack app](https://get.slack.help/hc/en-us/articles/202035138-Add-a
 
 
 ### Steps
-* Run `npm install`
+* Run `npm install`, this will create a lock file.
 
 ## Usage
 Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants.js](src/constants.js) will be called and the responses will be posted via the `SLACK_FLOBOT_WEBHOOK`.
