@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { SLACK_FLOBOT_WEBHOOK, SLACK_FLOBOT_WEBHOOK_TEST } from '../constants'
+import { SLACK_FLOBOT_WEBHOOK } from '../constants'
 import { formatTypeFormResponses } from './format-typeform'
 
 const postResponseToSlack = msg => axios({
