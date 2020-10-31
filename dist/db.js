@@ -11,7 +11,7 @@ var _constants = require('./constants');
 
 var connectToDB = exports.connectToDB = function connectToDB() {
   return new Promise(function (resolve, reject) {
-    return _mongodb.MongoClient.connect(_constants.DB_CONNECTION, { useNewUrlParser: true }, function (err, client) {
+    return _mongodb.MongoClient.connect(_constants.DB_URI, { useNewUrlParser: true }, function (err, client) {
       return err ? reject(err) : resolve(client);
     });
   });
