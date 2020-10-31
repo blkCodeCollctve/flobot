@@ -3,11 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var DB_USER = process.env.DB_USER;
-var DB_PASSWORD = process.env.DB_PASSWORD;
-var DB_URI = process.env.DB_URI;
-var DB_NAME = exports.DB_NAME = process.env.DB_NAME;
-var DB_CONNECTION = exports.DB_CONNECTION = 'mongodb://' + DB_USER + ':' + DB_PASSWORD + '@' + DB_URI;
+var DB_URI = exports.DB_URI = process.env.DB_URI;
 var LAST_QUERY_DOCUMENT = exports.LAST_QUERY_DOCUMENT = 'lastQuery';
 
 var SLACK_FLOBOT_WEBHOOK = exports.SLACK_FLOBOT_WEBHOOK = process.env.SLACK_FLOBOT_WEBHOOK; // #invites

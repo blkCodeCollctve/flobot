@@ -1,9 +1,8 @@
 import { MongoClient } from 'mongodb'
-
-import { DB_CONNECTION } from './constants'
+import { DB_URI } from './constants'
 
 export const connectToDB = () =>
-  new Promise((resolve, reject) => MongoClient.connect(DB_CONNECTION, { useNewUrlParser: true }, (err, client) =>
+  new Promise((resolve, reject) => MongoClient.connect(DB_URI, { useNewUrlParser: true }, (err, client) =>
     err ? reject(err) : resolve(client)
   ))
 
