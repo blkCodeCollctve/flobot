@@ -23,6 +23,7 @@ Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants
 If the environment variables are created locally, this code can also be run with `npm start`.
 
 ### Environment Variables
+  * `NODE_ENV` - Node development environment, either "production" (the production heroku worker environment) or "development"
   * `DB_URI` - database URI (the database name, user, and password is required to create the URI)
   * `SLACK_FLOBOT_WEBHOOK` - the Slack webhook URL
   * `SLACK_FLOBOT_WEBHOOK_TEST` - the Slack webhook URL for testing (optional)

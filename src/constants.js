@@ -1,5 +1,6 @@
 export const DB_URI = process.env.DB_URI
 export const LAST_QUERY_DOCUMENT = 'lastQuery'
+export const NODE_ENV = process.env.NODE_ENV
 
 export const SLACK_FLOBOT_WEBHOOK = process.env.SLACK_FLOBOT_WEBHOOK // #invites
 export const SLACK_FLOBOT_WEBHOOK_TEST = process.env.SLACK_FLOBOT_WEBHOOK_TEST // #flobot
