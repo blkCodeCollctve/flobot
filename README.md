@@ -1,6 +1,6 @@
 # Flobot ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-Flobot is a [Slack app](https://get.slack.help/hc/en-us/articles/202035138-Add-an-app-to-your-workspace) that retrieves [Typeform responses](https://developer.typeform.com/responses/reference/retrieve-responses/) and posts them to Slack using a given webhook. Flobot is configured to be hosted in [Heroku](https://www.heroku.com/) and run as a standalone worker that is scheduled via [Heroku's Scheduler](https://devcenter.heroku.com/articles/scheduler). An [mLab](https://mlab.com/) database is being used to save the last time the worker is run to ensure only new Typeform responses are retrieved.
+Flobot is a [Slack app](https://get.slack.help/hc/en-us/articles/202035138-Add-an-app-to-your-workspace) that retrieves [Typeform responses](https://developer.typeform.com/responses/reference/retrieve-responses/) and posts them to Slack using a given webhook. Flobot is configured to be hosted in [Heroku](https://www.heroku.com/) and run as a standalone worker that is scheduled via [Heroku's Scheduler](https://devcenter.heroku.com/articles/scheduler). A [MongoDB](cloud.mongodb.com) database is being used to save the last time the worker is run to ensure only new Typeform responses are retrieved.
 
 ## Installation
 
@@ -12,6 +12,10 @@ Flobot is a [Slack app](https://get.slack.help/hc/en-us/articles/202035138-Add-a
 
 ### Steps
 * Run `npm install`, this will create a lock file.
+* Run `npm start` to begin the worker process.
+
+  **NOTE:** `npm start` should not be used to verify code changes as local environments operate differently than [Heroku's](https://devcenter.heroku.com/articles/dynos). Instead use [`heroku local`](https://devcenter.heroku.com/articles/heroku-local).
+  
 
 ## Usage
 Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants.js](src/constants.js) will be called and the responses will be posted via the `SLACK_FLOBOT_WEBHOOK`.
@@ -19,10 +23,7 @@ Once these changes have been deployed the `TYPEFORM_RESPONSES_URL` in [constants
 If the environment variables are created locally, this code can also be run with `npm start`.
 
 ### Environment Variables
-  * `DB_URI` - database URI
-  * `DB_NAME` - database name
-  * `DB_USER` - database user
-  * `DB_PASSWORD` - database user password
+  * `DB_URI` - database URI (the database name, user, and password is required to create the URI)
   * `SLACK_FLOBOT_WEBHOOK` - the Slack webhook URL
   * `SLACK_FLOBOT_WEBHOOK_TEST` - the Slack webhook URL for testing (optional)
   * `TYPEFORM_KEY` - the Typeform Person Token
@@ -38,9 +39,7 @@ To make changes to this PR, adhere to the following process:
 3. Push your branch and create a PR.
     - Once your PR is merged it will be deployed to Heroku.
 
-**NOTE:** Making changes to this repo requires admin access to Black Code Collective's Slack team, Typeform, mLab database, and collaborator access to the Flobot Heroku app.
-
-Also, `npm start` should not be used to verify code changes as local environments operate differently than [Heroku's](https://devcenter.heroku.com/articles/dynos).
+**NOTE:** Making changes to this repo requires admin access to Black Code Collective's Slack team, Typeform, data store, and collaborator access to the Flobot Heroku app.
 
 ## Contributing
 Pull Requests are welcome but please open an issue before submitting a PR. In addition please be sure to update tests and this README as appropriate.
