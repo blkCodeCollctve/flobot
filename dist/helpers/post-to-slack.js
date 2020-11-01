@@ -15,10 +15,12 @@ var _formatTypeform = require('./format-typeform');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var env = _constants.NODE_ENV || "development";
+var slackWebHook = env === "production" ? _constants.SLACK_FLOBOT_WEBHOOK : _constants.SLACK_FLOBOT_WEBHOOK_TEST;
 var postResponseToSlack = function postResponseToSlack(msg) {
   return (0, _axios2.default)({
     method: 'post',
-    url: _constants.SLACK_FLOBOT_WEBHOOK,
+    url: slackWebHook,
     data: {
       text: msg
     },

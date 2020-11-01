@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var DB_URI = exports.DB_URI = process.env.DB_URI;
 var LAST_QUERY_DOCUMENT = exports.LAST_QUERY_DOCUMENT = 'lastQuery';
+var NODE_ENV = exports.NODE_ENV = process.env.NODE_ENV;
 
 var SLACK_FLOBOT_WEBHOOK = exports.SLACK_FLOBOT_WEBHOOK = process.env.SLACK_FLOBOT_WEBHOOK; // #invites
 var SLACK_FLOBOT_WEBHOOK_TEST = exports.SLACK_FLOBOT_WEBHOOK_TEST = process.env.SLACK_FLOBOT_WEBHOOK_TEST; // #flobot
